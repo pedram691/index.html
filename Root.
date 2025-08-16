@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LuxShop Dubai</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#fff8f0; }
+    header { background:#d4af37; color:white; padding:15px; text-align:center; font-size:20px; }
+    nav { display:flex; justify-content:center; gap:20px; background:#fff; padding:10px; }
+    nav a { text-decoration:none; color:#444; font-weight:bold; }
+    .products { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:20px; padding:20px; }
+    .card { background:white; border-radius:12px; box-shadow:0 2px 5px rgba(0,0,0,0.1); padding:10px; text-align:center; }
+    .card img { max-width:100%; border-radius:8px; }
+    footer { background:#333; color:white; text-align:center; padding:10px; margin-top:20px; }
+    select { margin-left:10px; }
+  </style>
+</head>
+<body>
+  <header>
+    LuxShop Dubai 🛍️
+    <select id="langSwitcher">
+      <option value="en">English</option>
+      <option value="fa">فارسی</option>
+      <option value="ar">العربية</option>
+    </select>
+  </header>
+
+  <nav>
+    <a href="#bags" data-key="bags">Bags</a>
+    <a href="#shoes" data-key="shoes">Shoes</a>
+    <a href="#luggage" data-key="luggage">Luggage</a>
+    <a href="#watches" data-key="watches">Watches</a>
+  </nav>
+
+  <section class="products" id="bags">
+    <div class="card">
+      <img src="https://via.placeholder.com/200x200.png?text=Bag+1" alt="Bag">
+      <p data-key="bag1">Luxury Leather Bag</p>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/200x200.png?text=Bag+2" alt="Bag">
+      <p data-key="bag2">Golden Handbag</p>
+    </div>
+  </section>
+
+  <section class="products" id="shoes">
+    <div class="card">
+      <img src="https://via.placeholder.com/200x200.png?text=Shoe+1" alt="Shoe">
+      <p data-key="shoe1">Elegant High Heels</p>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/200x200.png?text=Shoe+2" alt="Shoe">
+      <p data-key="shoe2">Men’s Classic Shoes</p>
+    </div>
+  </section>
+
+  <section class="products" id="luggage">
+    <div class="card">
+      <img src="https://via.placeholder.com/200x200.png?text=Luggage+1" alt="Luggage">
+      <p data-key="luggage1">Premium Travel Luggage</p>
+    </div>
+  </section>
+
+  <section class="products" id="watches">
+    <div class="card">
+      <img src="https://via.placeholder.com/200x200.png?text=Watch+1" alt="Watch">
+      <p data-key="watch1">Luxury Golden Watch</p>
+    </div>
+  </section>
+
+  <footer>
+    <p data-key="contact">Contact us on WhatsApp: [Your Number Here]</p>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        bags:"Bags", shoes:"Shoes", luggage:"Luggage", watches:"Watches",
+        bag1:"Luxury Leather Bag", bag2:"Golden Handbag",
+        shoe1:"Elegant High Heels", shoe2:"Men’s Classic Shoes",
+        luggage1:"Premium Travel Luggage", watch1:"Luxury Golden Watch",
+        contact:"Contact us on WhatsApp: [Your Number Here]"
+      },
+      fa: {
+        bags:"کیف", shoes:"کفش", luggage:"چمدان", watches:"ساعت",
+        bag1:"کیف چرمی لوکس", bag2:"کیف دستی طلایی",
+        shoe1:"کفش پاشنه‌بلند شیک", shoe2:"کفش کلاسیک مردانه",
+        luggage1:"چمدان مسافرتی لوکس", watch1:"ساعت طلایی لوکس",
+        contact:"برای خرید در واتس‌اپ پیام دهید: [شماره شما]"
+      },
+      ar: {
+        bags:"حقائب", shoes:"أحذية", luggage:"حقائب سفر", watches:"ساعات",
+        bag1:"حقيبة جلد فاخرة", bag2:"حقيبة يد ذهبية",
+        shoe1:"كعب عالي أنيق", shoe2:"حذاء كلاسيكي رجالي",
+        luggage1:"حقيبة سفر فاخرة", watch1:"ساعة ذهبية فاخرة",
+        contact:"للتواصل على واتساب: [رقمك هنا]"
+      }
+    };
+
+    const langSwitcher = document.getElementById("langSwitcher");
+    const elements = document.querySelectorAll("[data-key]");
+
+    langSwitcher.addEventListener("change", () => {
+      const lang = langSwitcher.value;
+      elements.forEach(el => {
+        const key = el.getAttribute("data-key");
+        el.textContent = translations[lang][key];
+      });
+    });
+  </script>
+</body>
+</html>
